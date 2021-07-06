@@ -8,10 +8,11 @@
 </p>
 
 
-##CATATAN
+## CATATAN ##
 1. validasi baru dilakukan di client side. harus divalidasi ulang di server side.
 2. Menu wilayah, perlu di kelola kembali agar bisa membuat laporan kunjungan berdasarkan wilayah pasien.
 3. Pada pemberian obat, data obat masih ganda & statis, belum bisa mengubah jumlah secara otomatis . dan total bayar harus diberi number format.
+4. Nomer transaksi belum di generate,
 
 
 ## About Laravel
