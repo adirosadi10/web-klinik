@@ -54,6 +54,7 @@
             </p>
           </a>
         </li>
+        @if(auth()->user()->level == 0 )
         <li class="nav-item {{ request()->is('laporan') ? 'active' : '' }}">
           <a href="/laporan" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
@@ -137,7 +138,13 @@
             </li>
           </ul>
         </li>
-        <!--  -->
+        @endif
+        <li class="nav-item">
+          <a href="{{route('logOut')}}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Log Out</p>
+          </a>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
