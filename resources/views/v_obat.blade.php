@@ -94,7 +94,7 @@
           <div class="form-group row">
             <label for="inputharga" class="col-sm-3 col-form-label">Harga Obat</label>
             <div class="col-sm-9">
-              <input type="text" name="harga" class="form-control" id="inputharga" placeholder="Harga ..." required>
+              <input type="number" name="harga" class="form-control" id="inputharga" placeholder="Harga ..." required>
             </div>
           </div>
       </div>

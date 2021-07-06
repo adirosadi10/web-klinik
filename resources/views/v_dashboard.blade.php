@@ -2,24 +2,76 @@
 
 @section('title', 'Dashboard')
 @section('content')
-<div class="card">
-  <div class="card-header">
-    <h3 class="card-title">Title</h3>
+<div class="row">
+  <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box">
+      <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
-    <div class="card-tools">
-      <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-        <i class="fas fa-minus"></i></button>
-      <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-        <i class="fas fa-times"></i></button>
+      <div class="info-box-content">
+        <span class="info-box-text">CPU Traffic</span>
+        <span class="info-box-number">
+          @foreach($pemasukan as $data)
+          {{$data->total}}
+          @endforeach
+          <small>%</small>
+        </span>
+      </div>
+      <!-- /.info-box-content -->
     </div>
+    <!-- /.info-box -->
   </div>
-  <div class="card-body">
-    Start creating your amazing application!
+  <!-- /.col -->
+  <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box mb-3">
+      <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Likes</span>
+        <span class="info-box-number">
+          @foreach($pembayaran as $data)
+          {{$data->pembayaran}}
+          @endforeach
+        </span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
   </div>
-  <!-- /.card-body -->
-  <div class="card-footer">
-    Footer
+  <!-- /.col -->
+
+  <!-- fix for small devices only -->
+  <div class="clearfix hidden-md-up"></div>
+
+  <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box mb-3">
+      <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Sales</span>
+        <span class="info-box-number">@foreach($kunjungan as $data)
+          {{$data->kunjungan}}
+          @endforeach</span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
   </div>
-  <!-- /.card-footer-->
+  <!-- /.col -->
+  <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box mb-3">
+      <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">New Members</span>
+        <span class="info-box-number">@foreach($daftar as $data)
+          {{$data->daftar}}
+          @endforeach</span></span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <!-- /.col -->
 </div>
+
 @endsection

@@ -38,7 +38,6 @@ class ObatController extends Controller
             'no_obat' => $request->no_obat,
             'nama_obat' => $request->nama_obat,
             'jenis' => $request->jenis,
-
             'harga' => $request->harga,
         ];
         DB::table('obats')->insert($data);

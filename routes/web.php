@@ -11,12 +11,23 @@ use App\Http\Controllers\PeriksaDetailController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', [LoginController::class, 'halamanLogin'])->name('halamanLogin');
 Route::post('/proseslogin', [LoginController::class, 'prosesLogin'])->name('prosesLogin');
 Route::get('/logout', [LoginController::class, 'logOut'])->name('logOut');
 
 Route::group(['middleware' => ['auth', 'ceklevel: 0 , 1']], function () {
+    Route::get('/user', [UserController::class, 'index'])->name('dataUser');
+    Route::post('/user/add', [UserController::class, 'create'])->name('tambahUser');
+    Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('editUser');
+    Route::post('/user/update', [UserController::class, 'update'])->name('updateUser');
+    Route::get('/obat/delete/{id}', [ObatController::class, 'destroy'])->name('deleteData');
+    
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    
+
     Route::get('/obat', [ObatController::class, 'index'])->name('obat');
     Route::post('/obat/add', [ObatController::class, 'create'])->name('tambahData');
     Route::get('/obat/edit/{id}', [ObatController::class, 'edit'])->name('editData');
@@ -66,9 +77,7 @@ Route::group(['middleware' => ['auth', 'ceklevel: 0 , 1']], function () {
 Route::get('/laporan', function () {
     return view('laporan/laporan');
 });
-Route::get('/dashboard', function () {
-    return view('v_dashboard');
-});
+
 
 
 
