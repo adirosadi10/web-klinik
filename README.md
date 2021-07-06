@@ -7,6 +7,13 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+
+##CATATAN
+1. validasi baru dilakukan di client side. harus divalidasi ulang di server side.
+2. Menu wilayah, perlu di kelola kembali agar bisa membuat laporan kunjungan berdasarkan wilayah pasien.
+3. Pada pemberian obat, data obat masih ganda & statis, belum bisa mengubah jumlah secara otomatis . dan total bayar harus diberi number format.
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
