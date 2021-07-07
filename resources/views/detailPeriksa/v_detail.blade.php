@@ -1,11 +1,10 @@
 @extends('layouts/user/template')
-@section('title', 'Proses Data')
+@section('title', 'Detail Pemeriksaan')
 @section('content')
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">DataTable with default features</h3>
+    <h3 class="card-title">Detail Pemeriksaan</h3>
   </div>
-  <!-- /.card-header -->
   <div class="card-body">
     <div class="row">
       <div class="col-6">
@@ -44,7 +43,6 @@
           <p>{{$data->keterangan}}</p>
           @endforeach
         </div>
-
         @foreach($periksa as $data)
         <form method="POST" action="/proses/edit/{{$data->id_periksa}}">
           @method('POST')
@@ -71,73 +69,8 @@
           </div>
         </form>
       </div>
-
     </div>
-    <div class="row">
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Nama Obat</th>
-              <th>Harga</th>
-              <th>Jumlah</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($detail as $data)
-            <tr>
-              <td>{{$data->nama_obat}}</td>
-              <td>{{$data->harga}}</td>
-              <td>{{$data->jumlah}}</td>
-              <td>{{$data->harga*$data->jumlah}}</td>
-            </tr>
-            @endforeach
-          </tbody>
-          @foreach($total as $data)<?php $total = $data->total; ?>@endforeach
-          @foreach($periksa as $data)<?php $tarif = $data->tarif ?>@endforeach
-          <tfoot>
-            <tr>
-              <th colspan="2"></th>
-              <th>Biaya Jasa</th>
-              <th>
-                <?= $tarif; ?>
-              </th>
-            </tr>
-            <tr>
-              <th colspan="2"></th>
-              <th>Subtotal</th>
-              <th>
-                <?= $total; ?>
-              </th>
-            </tr>
-            <tr>
-              <th colspan="2"></th>
-              <th>Total Bayar</th>
-              <th>
-                <?php
-                $j = $total + $tarif;
-                echo "$j";
-                ?>
-              </th>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-    </div>
-    <div>
-      <form method="POST" action="{{route('simpanTransaksi')}}">
-        @method('POST')
-        @csrf
-        <input hidden name="total" type="text" value="<?= $j ?>">
-        <input hidden name="id" type="text" value="<?= $id ?>">
-        <button type="submit" class="btn btn-sm btn-success" style="width: 100%;">Tambah</button>
-
-      </form>
-    </div>
-
-    <!-- /.card-body -->
+    @include('detailPeriksa/detailObat')
   </div>
 </div>
-<div class="card"></div>
 @endsection

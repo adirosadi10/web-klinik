@@ -18,21 +18,14 @@ class PegawaiController extends Controller
     {
         if ($request) {
             $pegawai = DB::table('pegawais')
-                // ->where('no_pegawai', 'like', '%' . $request->cari . '%')
                 ->where('nama_pegawai', 'like', '%' . $request->cari . '%')
                 ->get();
         } else {
 
             $pegawai = DB::table('pegawais')->get();
         }
-        return view('v_pegawai', ['pegawai' => $pegawai], ['request' => $request]);
+        return view('pegawai.v_pegawai', ['pegawai' => $pegawai], ['request' => $request]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request)
     {
         $data = [
@@ -48,51 +41,24 @@ class PegawaiController extends Controller
         return redirect()->route('pegawai')->with('pesan', 'Data Berhasil ditambahkan');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pegawai  $pegawai
-     * @return \Illuminate\Http\Response
-     */
     public function show(Pegawai $pegawai)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Pegawai  $pegawai
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Request $request)
     {
         $data = pegawai::findOrFail($request->get('id_pegawai'));
         echo json_encode($data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pegawai  $pegawai
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Pegawai $pegawai)
     {
         $data = [
-
             'id_pegawai' => Request()->id_pegawai,
             'no_pegawai' => Request()->no_pegawai,
             'nama_pegawai' => Request()->nama_pegawai,
@@ -107,13 +73,6 @@ class PegawaiController extends Controller
             ->update($data);
         return redirect()->route('pegawai')->with('pesan', 'Data Berhasil diupdate');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Pegawai  $pegawai
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id_pegawai)
     {
         DB::table('pegawais')

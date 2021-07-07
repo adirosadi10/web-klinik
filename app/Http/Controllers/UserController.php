@@ -17,12 +17,15 @@ class UserController extends Controller
             $user = DB::table('users')->where('level' . '=' . '1')->get();
         } else {
             $user = DB::table('users')
-                // ->where('no_obat', 'like', '%' . $request->cari . '%')
                 ->where('name', 'like', '%' . $request->cari . '%')
-                // ->where('level' . '=' . 1)
                 ->get();
         }
         return view('user.dataUser', \compact('user', 'request'));
+    }
+    public function indexDelete(Request $request)
+    {
+        $userDelete = DB::table('users')->where('level', '=', '1')->get();
+        return view('user.dataUserDelete', \compact('userDelete'));
     }
     public function create(Request $request)
     {
@@ -34,8 +37,6 @@ class UserController extends Controller
             'remember_token' => Str::random(50),
 
         ];
-        // \dd($data);
-
         DB::table('users')->insert($data);
         return redirect()->route('dataUser')->with('pesan', 'Data Berhasil ditambahkan');
     }
@@ -62,6 +63,6 @@ class UserController extends Controller
         DB::table('users')
             ->where('id', $id)
             ->delete();
-        return redirect()->route('dataUser')->with('pesan', 'Data Berhasil dihapus');
+        return redirect()->route('dataUserDelete')->with('pesan', 'Data Berhasil dihapus');
     }
 }

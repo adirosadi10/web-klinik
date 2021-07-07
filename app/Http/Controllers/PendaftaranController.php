@@ -10,24 +10,11 @@ use Illuminate\Support\Facades\DB;
 
 class PendaftaranController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
-
     {
-
         $pendaftaran = Pendaftaran::where('status', '=', 0)->get();
-        return view('v_pendaftaran', ['pendaftaran' => $pendaftaran]);
+        return view('pendaftaran.v_pendaftaran', ['pendaftaran' => $pendaftaran]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request)
     {
         $data = [
@@ -45,53 +32,22 @@ class PendaftaranController extends Controller
         DB::table('pendaftarans')->insert($data);
         return redirect()->route('pendaftaran')->with('pesan', 'Data Berhasil ditambahkan');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pendaftaran  $pendaftaran
-     * @return \Illuminate\Http\Response
-     */
     public function show(Pendaftaran $pendaftaran)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Pendaftaran  $pendaftaran
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Request $request)
     {
         $data = pendaftaran::findOrFail($request->get('id_daftar'));
         echo json_encode($data);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pendaftaran  $pendaftaran
-     * @param  \App\Models\Periksa  $pendaftaran
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, pendaftaran $pendaftaran)
     {
         $data = [
-
             'id_daftar' => Request()->id_daftar,
             'no_id' => Request()->no_id,
             'nama' => Request()->nama,
@@ -103,7 +59,6 @@ class PendaftaranController extends Controller
             'tgl_daftar' => Request()->tgl_daftar,
             'status' => 1,
             'updated_at' => \date(\now())
-
         ];
         DB::table('pendaftarans')
             ->where('id_daftar', $data['id_daftar'])
@@ -115,13 +70,6 @@ class PendaftaranController extends Controller
         DB::table('periksas')->insert($proses);
         return redirect()->route('pendaftaran')->with('pesan', 'Data Berhasil diupdate');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Pendaftaran  $pendaftaran
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id_daftar)
     {
         DB::table('pendaftarans')

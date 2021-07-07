@@ -1,11 +1,10 @@
 @extends('layouts/user/template')
-@section('title', 'Proses Data')
+@section('title', 'Data Pemeriksaan')
 @section('content')
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">DataTable with default features</h3>
+    <h3 class="card-title">Data Pemeriksaan</h3>
   </div>
-  <!-- /.card-header -->
   <div class="card-body">
     <div class="row">
       <div class="col-6">
@@ -41,10 +40,8 @@
           <p>{{$data->tindakan}}</p>
           <label>Keterangan</label>
           <p>{{$data->keterangan}}</p>
-
           @endforeach
         </div>
-
         @foreach($periksa as $data)
         <form method="POST" action="/proses/edit/{{$data->id_periksa}}">
           @method('POST')
@@ -71,11 +68,7 @@
           </div>
         </form>
       </div>
-
     </div>
-
-    <!-- /.card-body -->
   </div>
 </div>
-<div class="card"></div>
 @endsection

@@ -3,23 +3,9 @@
 @section('content')
 <div class="card">
   <div class="card-header">
-    <div class="row">
-      <div class="col-6">
-        <form class="d-flex" action="" method="GET">
-          <input type="search" value="{{$request->cari}}" name="cari" class="form-control mr-2" placeholder="Cari obat....">
-          <button type="submit" class="btn btn-primary">
-            cari
-          </button>
-        </form>
-      </div>
-      <div class="col-6">
-        <button type="button" class="btn btn-primary end" data-toggle="modal" data-target="#modal-default">
-          Tambah
-        </button>
-      </div>
-
-    </div>
+    <h4>Delete Data User</h4>
   </div>
+
   <!-- /.card-header -->
   <div class="card-body">
     @if (session('pesan'))
@@ -40,7 +26,7 @@
       </thead>
       <tbody>
         <?php $no = 1; ?>
-        @foreach($user as $data)
+        @foreach($userDelete as $data)
         <tr>
           <td>{{$no++}}</td>
           <td>{{$data->name}}</td>
@@ -51,15 +37,18 @@
             echo "  <td>MEMBER</td>";
           } ?>
           <td>
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit{{$data->id}}">Edit <i class="fas fa-edit"></i></button>
+
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$data->id}}"><i class="fas fa-trash"></i></button>
           </td>
         </tr>
         @endforeach
+
       </tbody>
     </table>
   </div>
   <!-- /.card-body -->
 </div>
-@include('user/tambah')
-@include('user/update')
+@include('user/delete')
+
+
 @endsection

@@ -1,5 +1,5 @@
 @extends('layouts/user/template')
-@section('title', 'Data User')
+@section('title', 'Data Obat')
 @section('content')
 <div class="card">
   <div class="card-header">
@@ -17,7 +17,6 @@
           Tambah
         </button>
       </div>
-
     </div>
   </div>
   <!-- /.card-header -->
@@ -32,34 +31,33 @@
       <thead>
         <tr>
           <th>No.</th>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Level</th>
+          <th>Kode Obat</th>
+          <th>Nama Obat</th>
+          <th>Jenis</th>
+          <th>Harga</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
         <?php $no = 1; ?>
-        @foreach($user as $data)
+        @foreach($obat as $data)
         <tr>
           <td>{{$no++}}</td>
-          <td>{{$data->name}}</td>
-          <td>{{$data->email}}</td>
-          <?php if ($data->level == 0) {
-            echo " <td>ADMIN</td>";
-          } else {
-            echo "  <td>MEMBER</td>";
-          } ?>
+          <td>{{$data->no_obat}}</td>
+          <td>{{$data->nama_obat}}</td>
+          <td>{{$data->jenis}}</td>
+          <td>{{$data->harga}}</td>
           <td>
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit{{$data->id}}">Edit <i class="fas fa-edit"></i></button>
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit{{$data->id_obat}}"><i class="fas fa-edit"></i></button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$data->id_obat}}"><i class="fas fa-trash"></i></button>
           </td>
         </tr>
         @endforeach
       </tbody>
     </table>
   </div>
-  <!-- /.card-body -->
 </div>
-@include('user/tambah')
-@include('user/update')
+@include('obat/tambah')
+@include('obat/update')
+@include('obat/delete')
 @endsection
