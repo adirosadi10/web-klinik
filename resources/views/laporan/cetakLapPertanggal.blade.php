@@ -21,7 +21,6 @@
           <div class="col-lg-12 text-center mb-4">
             <strong>LAPORAN HARIAN.</strong><br>
             <h4>Riwayat kunjungan tanggal : {{ date('d-m-Y', strtotime($tgl))}}</h4>
-
           </div>
         </div>
         <!-- Table row -->

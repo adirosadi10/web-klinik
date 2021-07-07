@@ -64,7 +64,7 @@ class TransaksiController extends Controller
             'updated_at' => \date(\now())
         ];
         DB::table('transaksis')
-            ->where('id_transaksi', $data['id_periksa'])
+            ->where('id_transaksi', $data['id_transaksi'])
             ->update($data);
         return redirect()->route('Transaksi')->with('pesan', 'Data Berhasil dibayarkan');
     }

@@ -11,8 +11,6 @@ class LoginController extends Controller
     {
         return view('login');
     }
-
-
     public function ProsesLogin(Request $request)
     {
         if (Auth::attempt($request->only('email', 'password'))) {

@@ -46,7 +46,10 @@
           <td>{{$data->no_obat}}</td>
           <td>{{$data->nama_obat}}</td>
           <td>{{$data->jenis}}</td>
-          <td>{{$data->harga}}</td>
+          <td>
+            <?php
+            echo "Rp " . number_format($data->harga, 0, ',', '.');
+            ?></td>
           <td>
             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit{{$data->id_obat}}"><i class="fas fa-edit"></i></button>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$data->id_obat}}"><i class="fas fa-trash"></i></button>

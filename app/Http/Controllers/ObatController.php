@@ -47,7 +47,6 @@ class ObatController extends Controller
     public function update(Request $request, Obat $obat)
     {
         $data = [
-
             'id_obat' => Request()->id_obat,
             'no_obat' => Request()->no_obat,
             'nama_obat' => Request()->nama_obat,

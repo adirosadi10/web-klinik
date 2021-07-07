@@ -23,7 +23,7 @@
                with font-awesome or any other icon font library -->
         <li class="nav-item {{ request()->is('dashboard') ? 'active' : '' }}">
           <a href="{{route('dashboard')}}" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fas fa-th"></i>
             <p>
               Dashboard
             </p>
@@ -31,7 +31,7 @@
         </li>
         <li class="nav-item {{ request()->is('pendaftaran') ? 'active' : '' }}">
           <a href="{{route('pendaftaran')}}" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
+            <i class="nav-icon fas fa-address-book"></i>
             <p>
               Pendaftaran
             </p>
@@ -39,15 +39,15 @@
         </li>
         <li class="nav-item {{ request()->is('periksa') ? 'active' : '' }}">
           <a href="{{route('periksa')}}" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
+            <i class="nav-icon fas fa-medkit"></i>
             <p>
               Pemeriksaan
             </p>
           </a>
         </li>
         <li class="nav-item {{ request()->is('transkasi') ? 'active' : '' }}">
-          <a href="{{route('transaksi')}}" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
+          <a href="{{route('Transaksi')}}" class="nav-link">
+            <i class="nav-icon fas fa-dollar-sign"></i>
             <p>
               Transaksi
             </p>
@@ -58,7 +58,7 @@
 
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-circle"></i>
+            <i class="nav-icon fas fa-chart-bar"></i>
             <p>
               Laporan
               <i class="right fas fa-angle-left"></i>
@@ -92,7 +92,7 @@
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="{{route('obat')}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+                <i class="far fa-medkit nav-icon"></i>
                 <p>Data Obat</p>
               </a>
             </li>
@@ -104,13 +104,13 @@
             </li>
             <li class="nav-item">
               <a href="{{route('pegawai')}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+                <i class="far fa-users nav-icon"></i>
                 <p>Data Pegawai</p>
               </a>
             </li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-circle"></i>
+                <i class="nav-icon fas fa-user"></i>
                 <p>
                   User
                   <i class="right fas fa-angle-left"></i>
@@ -133,7 +133,7 @@
             </li>
             <li class="nav-item">
               <a href="{{route('wilayah')}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+                <i class="far fa-map nav-icon"></i>
                 <p>Data Wilayah</p>
               </a>
             </li>
@@ -148,7 +148,7 @@
         @endif
         <li class="nav-item">
           <a href="{{route('logOut')}}" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
+            <i class="far fa-arrow-left nav-icon"></i>
             <p>Log Out</p>
           </a>
         </li>

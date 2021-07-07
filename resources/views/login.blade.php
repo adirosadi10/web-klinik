@@ -14,7 +14,6 @@
   <div class="login-box">
     <div class="login-logo"><b>Klinik</b> Sehat</a>
     </div>
-    <!-- /.login-logo -->
     <div class="card">
       <div class="card-body login-card-body">
         <p class="login-box-msg">Silahkan Log In</p>
