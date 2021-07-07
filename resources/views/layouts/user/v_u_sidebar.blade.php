@@ -76,13 +76,13 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="/laporan-harian" class="nav-link">
+              <a href="{{route('formHarian')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Laporan Harian</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="/laporan-bulanan" class="nav-link">
+              <a href="{{route('formBulanan')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Laporan Bulanan</p>
               </a>

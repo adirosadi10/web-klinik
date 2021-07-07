@@ -107,7 +107,7 @@
           <div class="form-group row">
             <label for="inputkode" class="col-sm-3 col-form-label">Total Bayar</label>
             <div class="col-sm-9">
-              <input type="text" name="total" class="form-control" id="total" placeholder="Total Bayar ..." value="{{$data->total}}" required>
+              <input type="text" readonly name="total" class="form-control" id="total" placeholder="Total Bayar ..." value="{{$data->total}}" required>
             </div>
           </div>
           <div class="form-group row">
@@ -120,14 +120,14 @@
           <div class="form-group row">
             <label for="inputharga" class="col-sm-3 col-form-label">Kembalian</label>
             <div class="col-sm-9">
-              <input type="number" value="" name="kembali" class="form-control" id="kembali" placeholder="Kembalian ..." required>
+              <input type="number" readonly value="" name="kembali" class="form-control" id="kembali" placeholder="Kembalian ..." required>
             </div>
           </div>
       </div>
 
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button onclick="valid();" type="submit" id="submit" name="submit" class="btn btn-primary">Save changes</button>
+        <button onclick="valid();" type="" id="submit" name="submit" class="btn btn-primary">Save changes</button>
       </div>
       </form>
     </div>
@@ -138,6 +138,7 @@
 @endforeach
 @endsection
 @section('script')
+
 <script>
   function kurang() {
     var dbil1 = document.getElementById('total').value
@@ -153,7 +154,6 @@
     if (document.getElementById('kembali').value < 0) {
       alert('Pembayaran kurang !!!!')
       document.getElementById('submit').type = "button";
-      document.getElementById('error').value = "pembayaran kurang";
     } else {
       document.getElementById('submit').type = "submit";
     }

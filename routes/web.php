@@ -24,9 +24,9 @@ Route::group(['middleware' => ['auth', 'ceklevel: 0 , 1']], function () {
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('editUser');
     Route::post('/user/update', [UserController::class, 'update'])->name('updateUser');
     Route::get('/obat/delete/{id}', [ObatController::class, 'destroy'])->name('deleteData');
-    
+
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    
+
 
     Route::get('/obat', [ObatController::class, 'index'])->name('obat');
     Route::post('/obat/add', [ObatController::class, 'create'])->name('tambahData');
@@ -69,13 +69,17 @@ Route::group(['middleware' => ['auth', 'ceklevel: 0 , 1']], function () {
     Route::get('/transaksi/edit/{id_transaksi}', [TransaksiController::class, 'edit'])->name('editTransaksi');
     Route::post('/transaksi/update', [TransaksiController::class, 'update'])->name('bayarTransaksi');
 
-    Route::get('/laporan-harian', [LaporanController::class, 'harian'])->name('lapHarian');
-    Route::get('/laporan-bulanan', [LaporanController::class, 'bulanan'])->name('lapBulanan');
+    Route::get('/cetak-laporan-harian', [LaporanController::class, 'harian'])->name('lapHarian');
+    Route::get('/cetak-laporan-bulanan', [LaporanController::class, 'bulanan'])->name('lapBulanan');
+    Route::get('/form-laporan-harian', [LaporanController::class, 'formHarian'])->name('formHarian');
+    Route::get('/cetak-harian/{tgl}', [LaporanController::class, 'cetakHarian'])->name('cetakHarian');
+    Route::get('/form-laporan-bulanan', [LaporanController::class, 'formBulanan'])->name('formBulanan');
+    Route::get('/cetak-bulanan/{awal}/{akhir}', [LaporanController::class, 'cetakBulanan'])->name('cetakBulanan');
 });
 
 
 Route::get('/laporan', function () {
-    return view('laporan/laporan');
+    return view('laporan/cetakLapPerange');
 });
 
 

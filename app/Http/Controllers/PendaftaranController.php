@@ -40,6 +40,7 @@ class PendaftaranController extends Controller
             'no_hp' => $request->no_hp,
             'tgl_daftar' => date('Y-m-d'),
             'status' => 0,
+            'created_at' => \date(\now())
         ];
         DB::table('pendaftarans')->insert($data);
         return redirect()->route('pendaftaran')->with('pesan', 'Data Berhasil ditambahkan');
@@ -101,6 +102,8 @@ class PendaftaranController extends Controller
             'no_hp' => Request()->no_hp,
             'tgl_daftar' => Request()->tgl_daftar,
             'status' => 1,
+            'updated_at' => \date(\now())
+
         ];
         DB::table('pendaftarans')
             ->where('id_daftar', $data['id_daftar'])

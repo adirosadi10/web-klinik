@@ -17,6 +17,7 @@ class DashboardController extends Controller
         // $bulan = \substr($coba, 5, -3); bulan
         // $bulan = \substr($coba, 5); bulan-tanggal
         // $tanggal = \substr($coba, 8); tanggal
+
         $sekarang = Carbon::now()->toDateString();
         $kunjungan = DB::table('pendaftarans')->select(DB::Raw('count(*) as kunjungan'))
             ->where('tgl_daftar', '=', $sekarang)
@@ -37,7 +38,6 @@ class DashboardController extends Controller
         $pembayaran = DB::table('transaksis')
             ->select('tgl_transaksi', DB::raw('count(*) as pembayaran'))
             ->groupBy('tgl_transaksi')
-            ->where('tgl_transaksi', '=', $sekarang)
             ->where('status', '=', 0)
             ->get();
         // dd($tanggal);

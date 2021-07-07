@@ -8,12 +8,13 @@
       <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
       <div class="info-box-content">
-        <span class="info-box-text">CPU Traffic</span>
+        <span class="info-box-text">Pemasukan Hari ini</span>
         <span class="info-box-number">
           @foreach($pemasukan as $data)
-          {{$data->total}}
+          <?php
+          echo "Rp " . number_format($data->total, 0, ',', '.');
+          ?>
           @endforeach
-          <small>%</small>
         </span>
       </div>
       <!-- /.info-box-content -->
@@ -26,7 +27,7 @@
       <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
       <div class="info-box-content">
-        <span class="info-box-text">Likes</span>
+        <span class="info-box-text">Transaksi tertunda</span>
         <span class="info-box-number">
           @foreach($pembayaran as $data)
           {{$data->pembayaran}}
@@ -47,7 +48,7 @@
       <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
       <div class="info-box-content">
-        <span class="info-box-text">Sales</span>
+        <span class="info-box-text">Total Pasien Hari ini</span>
         <span class="info-box-number">@foreach($kunjungan as $data)
           {{$data->kunjungan}}
           @endforeach</span>
@@ -62,7 +63,7 @@
       <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
       <div class="info-box-content">
-        <span class="info-box-text">New Members</span>
+        <span class="info-box-text">Daftar Tunggu</span>
         <span class="info-box-number">@foreach($daftar as $data)
           {{$data->daftar}}
           @endforeach</span></span>

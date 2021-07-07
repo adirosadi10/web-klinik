@@ -20,14 +20,3 @@
     });
   })
 </script>
-<script>
-  function bayar() {
-    var dbil1 = document.getElementById('total').value
-    var dbil2 = document.getElementById('bayar').value
-    var result = parseFloat(dbil1) - parseFloat(dbil2);
-    if (!isNaN(result)) {
-
-      document.getElementById('kembali').value = result;
-    }
-  }
-</script>

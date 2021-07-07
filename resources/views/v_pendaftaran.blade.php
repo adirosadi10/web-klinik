@@ -33,9 +33,6 @@
       </thead>
       <tbody>
         <?php
-
-        use PhpParser\Node\Stmt\Else_;
-
         $no = 1; ?>
         @foreach($pendaftaran as $data)
         <tr>

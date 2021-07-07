@@ -3,35 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class LaporanController extends Controller
 {
-    public function harian(Request $request)
+    public function cetakHarian($tgl)
     {
-        $selesai = DB::table('transaksis')
-            ->join('periksas', 'periksas.id_periksa', '=', 'transaksis.id_periksa')
-            ->join('pendaftarans', 'pendaftarans.id_daftar', '=', 'periksas.id_daftar')
-            ->select('nama', 'id_transaksi', 'no_id', 'alamat', 'total', 'transaksis.status')
-            ->where('transaksis.status', '=', 1)
-            ->orderByDesc('tgl_transaksi')
-            ->limit(1);
+        $cetakHarian = DB::table('pendaftarans')
+            ->where('tgL_daftar', '=', $tgl)->get();
         // \dd($selesai);
-        return view('laporan.laporanHarian', \compact('selesai', 'request'));
+        return view('laporan.cetakLapPertanggal', \compact('cetakHarian', 'tgl'));
     }
-    public function bulanan(Request $request)
+    public function formHarian()
     {
-        
-
-        $selesai = DB::table('transaksis')
-        ->select('tgl_transaksi', DB::raw('SUM(total) as total_sales'))
-        ->groupBy('tgl_transaksi')
-            // ->select('tgl_transaksi','total')
-            // ->groupBy('tgl_transaksi')
+        return \view('laporan.FormLapHari');
+    }
+    public function formBulanan()
+    {
+        return \view('laporan.FormLapBulan');
+    }
+    public function cetakBulanan($awal, $akhir)
+    {
+        $cetakBulan = DB::table('transaksis')->select(DB::raw('DATE(tgl_transaksi) as tanggal'), DB::raw('SUM(total) as total_sales'))
+            ->groupBy('tgl_transaksi')
+            ->whereBetween('tgl_transaksi', [$awal, $akhir])
             ->get();
-        dd($selesai);
-        return view('laporan.laporanBulanan', \compact('selesai', 'request'));
+        $kunjungan = DB::table('pendaftarans')->select('tgl_daftar', DB::Raw('count(*) as kunjungan'))
+            ->groupBy('tgl_daftar')
+
+            ->whereBetween('tgl_daftar', [$awal, $akhir])
+            ->get();
+        return \view('laporan.cetakLapPerange', \compact('cetakBulan', 'kunjungan'));
     }
 }

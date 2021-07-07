@@ -52,6 +52,7 @@ class TransaksiController extends Controller
             'total' => $request->total,
             'tgl_transaksi' => \date('Y-m-d'),
             'status' => 0,
+            'created_at' => \date(\now())
         ];
         DB::table('transaksis')->insert($data);
         // return \view('v_pendaftaran');
@@ -110,14 +111,15 @@ class TransaksiController extends Controller
             'bayar' => Request()->bayar,
             'kembali' => Request()->kembali,
             'tgl_transaksi' => date('Y-m-d'),
-            'status' => 1
+            'status' => 1,
+            'updated_at' => \date(\now())
 
         ];
         DB::table('transaksis')
             ->where('id_transaksi', $data['id_periksa'])
             ->update($data);
 
-        return redirect()->route('transaksi')->with('pesan', 'Data Berhasil dibayarkan');
+        return redirect()->route('Transaksi')->with('pesan', 'Data Berhasil dibayarkan');
     }
 
     /**
